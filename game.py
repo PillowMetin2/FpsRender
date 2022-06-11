@@ -1,39 +1,36 @@
-#إبحث عن :
+# ابحث عن الكلاس التالي
 
 class GameWindow(ui.ScriptWindow):
 
 #أسفل :
-self.__ProcessPreservedServerCommand()
+self.playerGauge = None
 
 #أضف :
-		self.pingLine = None
-		if app.ENABLE_PINGTIME:
-			self.pingLine = ui.TextLine()
-			self.pingLine.SetFontName(localeInfo.UI_DEF_FONT_LARGE)
-			self.pingLine.SetFontColor(1.0,1.0,1.0)
-			self.pingLine.SetPosition((wndMgr.GetScreenWidth() - 130) / 2, 207)
+		self.fpsLine = None
+		self.fpsLine = ui.TextLine()
+		self.fpsLine.SetFontName(localeInfo.UI_DEF_FONT_LARGE)
+		self.SetPosition((wndMgr.GetScreenWidth() - 130) / 2, 237) ## قم بتغير الإحدثيات من هنا 
 			
-#إبحث عن
+#ابحث عن دالة
 def Close(self):
-#أسفل :
+#ابحث داخلها عن :
 			self.interface=None
 
-#أضف :
-		if app.ENABLE_PINGTIME:
-			self.pingLine = None
+#أضف في الأسفل :
+ 		self.fpsLine = None
 
 #إبحث عن
 def __BuildDebugInfo(self):
-#اسفل :
+#داخلها ابحث عن :
 		self.ViewDistance.SetPosition(0, 0)
 		
 #أضف اسفلها
-		if app.ENABLE_PINGTIME:
-			self.pingLine.SetWindowHorizontalAlignCenter()
-			self.pingLine.SetHorizontalAlignCenter()
-			self.pingLine.SetFeather()
-			self.pingLine.SetOutline()
-			self.pingLine.Show()
+ 		self.fpsLine.SetWindowHorizontalAlignCenter()
+ 		self.fpsLine.SetHorizontalAlignCenter()
+ 		self.fpsLine.SetFeather()
+ 		self.fpsLine.SetOutline()
+		self.fpsLine.SetFontName(localeInfo.UI_DEF_FONT)
+ 		self.fpsLine.Show()
 			
 #إبحث عن :
 def OnUpdate(self):
@@ -41,6 +38,5 @@ def OnUpdate(self):
 		self.interface.BUILD_OnUpdate()
 
 #أضف اسفلها :
-		if app.ENABLE_PINGTIME:
-			nPing = app.GetPingTime()
-			self.pingLine.SetText("PING: %s" % (nPing))
+ 		fFps = app.GetRenderFPS()
+ 		self.fpsLine.SetText("FPS : %s" % (fFps))
