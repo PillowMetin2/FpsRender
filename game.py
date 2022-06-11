@@ -8,7 +8,6 @@ self.playerGauge = None
 #أضف :
 		self.fpsLine = None
 		self.fpsLine = ui.TextLine()
-		self.fpsLine.SetFontName(localeInfo.UI_DEF_FONT_LARGE)
 		self.SetPosition((wndMgr.GetScreenWidth() - 130) / 2, 237) ## قم بتغير الإحدثيات من هنا 
 			
 #ابحث عن دالة
@@ -29,7 +28,7 @@ def __BuildDebugInfo(self):
  		self.fpsLine.SetHorizontalAlignCenter()
  		self.fpsLine.SetFeather()
  		self.fpsLine.SetOutline()
-		self.fpsLine.SetFontName(localeInfo.UI_DEF_FONT)
+		self.fpsLine.SetFontName(localeInfo.UI_DEF_FONT_LARGE)
  		self.fpsLine.Show()
 			
 #إبحث عن :
